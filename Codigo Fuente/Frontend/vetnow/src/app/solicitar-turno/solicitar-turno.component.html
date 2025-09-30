@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Nuevo turno
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titulo-formulario"> Solicitar turno </ion-card-title>
+      <ion-card-subtitle class="subtitulo-formulrio"> Complete el formulario </ion-card-subtitle>
+    </ion-card-header>
+  
+
+<ion-card-content>
+  <form (ngSubmit)="solicitarTurnoSubmit()">
+    <ion-item>
+     <ion-label position="floating"> Fecha </ion-label>
+     <ion-input [(ngModel)]="solicitarTurno.fecha" name="fecha"></ion-input>
+    </ion-item>
+
+    <ion-item>
+     <ion-label position="floating"> Hora </ion-label>
+     <ion-input [(ngModel)]="solicitarTurno.hora" name="hora"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+     <ion-label position="floating"> Domicilio </ion-label>
+     <ion-input [(ngModel)]="solicitarTurno.domicilio" name="domicilio"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+     <ion-label position="floating"> Especificaciones </ion-label>
+     <ion-input [(ngModel)]="solicitarTurno.especificaciones" name="especificaciones"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+     <ion-label position="floating"> Nombre </ion-label>
+     <ion-input [(ngModel)]="solicitarTurno.nombre" name="nombre"></ion-input>
+    </ion-item>
+
+    <ion-toggle [enableOnOffLabels]="true">Urgencia</ion-toggle>
+
+    <ion-button expand="block" class="boton-enviar" type="submit">  
+      Enviar
+    </ion-button>
+
+
+  </form>
+</ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,35 @@
+
+ion-content { --background: url('/assets/fondo.png') no-repeat center center / cover; }
+
+.titulo-formulario {
+    text-align: center;
+    color: #2e7d32;        /* verde */
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+  }
+  
+  ion-item {
+    --background: #f5f5dc; /* beige */
+    --color: #5d4037;      /* marrón para el texto */
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .boton-enviar {
+    --background: #8d6e63; /* marrón claro */
+    --border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .subtitulo-formulrio {
+    
+    color: #5d4037;        /* marrón */
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 10px;
+  }
+  
