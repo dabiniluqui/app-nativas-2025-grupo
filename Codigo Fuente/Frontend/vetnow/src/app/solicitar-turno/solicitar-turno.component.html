@@ -17,15 +17,16 @@
 
 <ion-card-content>
   <form (ngSubmit)="solicitarTurnoSubmit()">
-    <ion-item>
-     <ion-label position="floating"> Fecha </ion-label>
-     <ion-input [(ngModel)]="solicitarTurno.fecha" name="fecha"></ion-input>
-    </ion-item>
+   
 
-    <ion-item>
-     <ion-label position="floating"> Hora </ion-label>
-     <ion-input [(ngModel)]="solicitarTurno.hora" name="hora"></ion-input>
-    </ion-item>
+<ion-item class="fecha-item">
+  <ion-label class="fechaT">Fecha y Hora</ion-label>
+  <ion-datetime
+    display-format="YYYY-MM-DD"
+    [(ngModel)]="solicitarTurno.fecha"
+    name="fecha"
+  ></ion-datetime>
+</ion-item>
 
 
     <ion-item>
@@ -45,9 +46,9 @@
      <ion-input [(ngModel)]="solicitarTurno.nombre" name="nombre"></ion-input>
     </ion-item>
 
-    <ion-toggle [enableOnOffLabels]="true">Urgencia</ion-toggle>
+    <ion-toggle [(ngModel)]= "solicitarTurno.urgencia" [enableOnOffLabels]="true" name="urgencia">Urgencia</ion-toggle>
 
-    <ion-button expand="block" class="boton-enviar" type="submit">  
+    <ion-button expand="block" class="boton-enviar" (click)="solicitarTurnoSubmit()">  
       Enviar
     </ion-button>
 
@@ -55,5 +56,11 @@
   </form>
 </ion-card-content>
   </ion-card>
+  
+<ion-content class="ion-padding">
+  <ion-button routerLink="/home" expand="block" color="medium">
+    Volver a Home
+  </ion-button>
+</ion-content>
 
 </ion-content>
