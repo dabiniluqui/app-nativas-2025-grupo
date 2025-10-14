@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
 
@@ -7,7 +8,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/a
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton],
+  imports: [ RouterModule, IonicModule],
 })
   
   export class HomePage {

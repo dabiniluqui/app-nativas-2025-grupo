@@ -25,3 +25,21 @@
 #container a {
   text-decoration: none;
 }
+
+ion-content { --background: url('/assets/fondo.png') no-repeat center center / cover; }
+
+
+ion-toolbar {
+  --background: #5f5f5fd2;
+  --color: white;
+  font-weight: 500;
+}
+
+ion-button {
+  --color: white;
+}
+
+ion-card {
+  margin-top: 20px;
+  text-align: center;
+}
