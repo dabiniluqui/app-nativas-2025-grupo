@@ -23,28 +23,12 @@ const PORT = 3010;
 
 app.use(express.json());
 
-//Obtengo todos los turnos
-app.get('/turno', async (req, res) => {
-    const query = 'SELECT * FROM turnos ORDER BY id';
-
-    try {
-        const resultados = await clientSQL.query(query);
-
-        res.json(resultados.rows);
-
-    } catch(err) {
-        console.error(err);
-        res.status(500).send('Error al solicitar turno');
-    }
-});
-
-
 //Crear un turno
-app.post('/turno', async (req, res) => {
+app.post('/public.turno', async (req, res) => {
     //console.log(req.body);
-    const {fechayhora, domicilio, especificaciones, nombre, urgencia } = req.body;
-    const query = 'INSERT INTO turnos (nombre, domicilio, fechayhora, especificaciones, urgencia) VALUES( $1, $2, $3, $4, $5 )';
-    const values = [nombre, domicilio, fechayhora, especificaciones, urgencia];
+    const {id_turno, fecha_hora, domicilio, especificaciones, nombre_contacto, urgencia } = req.body;
+    const query = `INSERT INTO public.turno (id_turno, nombre_contacto, domicilio, especificaciones, urgencia, fecha_hora) VALUES(0, '', '', '', false, '', 0)`;
+    const values = [id_turno, nombre_contacto, domicilio, fecha_hora, especificaciones, urgencia];
 
     try {
         const resultados = await clientSQL.query(query, values);
@@ -73,7 +57,22 @@ app.post('/turno', async (req, res) => {
 
 
 
-/*
+/*Obtengo todos los turnos
+app.get('/public.turno', async (req, res) => {
+    const query = 'SELECT * FROM public.turnos ORDER BY id';
+
+    try {
+        const resultados = await clientSQL.query(query);
+
+        res.json(resultados.rows);
+
+    } catch(err) {
+        console.error(err);
+        res.status(500).send('Error al solicitar turno');
+    }
+});
+
+
 //Obtengo producto por nombre
 app.get('/productos/nombre/:nombre', async (req, res) => {
     const nombre = req.params.nombre;

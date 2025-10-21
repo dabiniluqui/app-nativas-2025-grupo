@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';  
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ export class TurnoService {
 
   constructor(private http: HttpClient) { }
 
-   solicitarTurno(turno : { fechayhora: string; domicilio: string; especificaciones: string; nombre: string; urgencia: boolean}):Observable<any>{
+   solicitarTurno(turno : { fecha_hora: string; domicilio: string; especificaciones: string; nombre_contacto: string; urgencia: boolean}):Observable<any>{
    
     return this.http.post(this.apiUrl, turno);
   }
