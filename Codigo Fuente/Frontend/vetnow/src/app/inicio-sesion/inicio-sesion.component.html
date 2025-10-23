@@ -1,7 +1,65 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+ 
+<ion-toolbar>
     <ion-title>
-      Blank
+      VetNow 🐾 
     </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/home">Home</ion-button>
+      <ion-button routerLink="/nuevo-turno" >Nuevo Turno </ion-button>               
+      <ion-button routerLink="/iniciar-sesion">Iniciar Sesion</ion-button>
+      <ion-button routerLink="/nosotros">🐾</ion-button>
+    </ion-buttons>
   </ion-toolbar>
+
+
+
 </ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Inicio de Sesion</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titulo-formulario">Iniciar sesión</ion-card-title>
+      <ion-card-subtitle class="subtitulo-formulario">Complete con sus datos</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form (ngSubmit)="iniciarsesionsub()">
+
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input [(ngModel)]="iniciarSesion.usuario" name="usuario"></ion-input>
+          <!-- Campo de texto donde el usuario escribe su nombre. 
+               [(ngModel)] vincula el valor al objeto iniciarSesion.usuario en el .ts 
+               (two-way data binding). 
+               'name="usuario"' es necesario para el ngModel dentro de formularios. -->
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input [(ngModel)]="iniciarSesion.pasword" name="pasword" type="password"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" class="boton-enviar" type="submit">  
+          Enviar
+        </ion-button>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+
+
+
+

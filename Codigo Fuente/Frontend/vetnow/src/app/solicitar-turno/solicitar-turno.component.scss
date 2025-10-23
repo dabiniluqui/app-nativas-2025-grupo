@@ -55,3 +55,9 @@ ion-content { --background: url('/assets/fondo.png') no-repeat center center / c
   text-align: left;
   
 }
+
+ion-toolbar {
+  --background: #555454d2;
+  --color: white;
+  font-weight: 500;
+}

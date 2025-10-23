@@ -27,7 +27,7 @@ app.use(express.json());
 app.post('/public.turno', async (req, res) => {
     //console.log(req.body);
     const {id_turno, fecha_hora, domicilio, especificaciones, nombre_contacto, urgencia } = req.body;
-    const query = `INSERT INTO public.turno (id_turno, nombre_contacto, domicilio, especificaciones, urgencia, fecha_hora) VALUES(0, '', '', '', false, '', 0)`;
+    const query = `INSERT INTO public.turno (id_turno, nombre_contacto, domicilio, especificaciones, urgencia, fecha_hora) VALUES(0, '', '', '', false, '')`;
     const values = [id_turno, nombre_contacto, domicilio, fecha_hora, especificaciones, urgencia];
 
     try {
@@ -41,7 +41,42 @@ app.post('/public.turno', async (req, res) => {
     }
 });
 
+/*
+// --- Inicio de Sesión (Logueo) ---
+app.post('/api/login', (req, res) => {
+    const { username, password } = req.body;
 
+    // Consulta SQL para buscar un usuario con las credenciales
+    const query = 'SELECT id_usuario, username FROM "usuario" WHERE username = $1 AND pasword = $2';
+    const values = [username, password];
+
+    clientSQL.query(query, values)
+        .then(result => {
+            if (result.rows.length > 0) {
+                // Usuario encontrado (credenciales correctas)
+                res.status(200).json({
+                    success: true,
+                    message: '¡Inicio de sesión exitoso!',
+                    user: result.rows[0] // Opcional: envías datos del usuario
+                });
+            } else {
+                // No se encontró el usuario (credenciales incorrectas)
+                res.status(401).json({ // 401 Unauthorized
+                    success: false,
+                    message: 'Usuario o contraseña incorrectos.'
+                });
+            }
+        })
+        .catch(err => {
+            console.error('Error al intentar iniciar sesión:', err);
+            res.status(500).json({
+                success: false,
+                message: 'Error interno del servidor al procesar la solicitud.'
+            });
+        });
+});
+
+*/
 
 
 
