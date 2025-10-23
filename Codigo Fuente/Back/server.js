@@ -27,7 +27,7 @@ app.use(express.json());
 app.post('/public.turno', async (req, res) => {
     //console.log(req.body);
     const {id_turno, fecha_hora, domicilio, especificaciones, nombre_contacto, urgencia } = req.body;
-    const query = `INSERT INTO public.turno (id_turno, nombre_contacto, domicilio, especificaciones, urgencia, fecha_hora) VALUES(0, '', '', '', false, '')`;
+    const query = `INSERT INTO public.turno (id_turno, nombre_contacto, domicilio, especificaciones, urgencia, fecha_hora) VALUES(1$1, $2, $3, $4, $5, $6)`;
     const values = [id_turno, nombre_contacto, domicilio, fecha_hora, especificaciones, urgencia];
 
     try {
