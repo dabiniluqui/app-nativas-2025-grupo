@@ -27,8 +27,8 @@ app.use(express.json());
 app.post('/public.turno', async (req, res) => {
     //console.log(req.body);
     const {id_turno, fecha_hora, domicilio, especificaciones, nombre_contacto, urgencia } = req.body;
-    const query = `INSERT INTO public.turno (id_turno, nombre_contacto, domicilio, especificaciones, urgencia, fecha_hora) VALUES(1$1, $2, $3, $4, $5, $6)`;
-    const values = [id_turno, nombre_contacto, domicilio, fecha_hora, especificaciones, urgencia];
+    const query = `INSERT INTO public.turno (nombre_contacto, domicilio, especificaciones, urgencia, fecha_hora) VALUES($1, $2, $3, $4, $5)`;
+    const values = [nombre_contacto, domicilio, especificaciones, urgencia, fecha_hora];
 
     try {
         const resultados = await clientSQL.query(query, values);
@@ -41,42 +41,30 @@ app.post('/public.turno', async (req, res) => {
     }
 });
 
-/*
-// --- Inicio de Sesión (Logueo) ---
-app.post('/api/login', (req, res) => {
-    const { username, password } = req.body;
+//Inicio de sesion
+app.post('/public.usuario', async (req, res) => {
+    //console.log(req.body);
+    const {username, pasword } = req.body;
+    const query = `SELECT username, pasword FROM public.usuario WHERE username = $1 AND pasword = $2`;
+    const values = [username, pasword];
 
-    // Consulta SQL para buscar un usuario con las credenciales
-    const query = 'SELECT id_usuario, username FROM "usuario" WHERE username = $1 AND pasword = $2';
-    const values = [username, password];
+    try {
+        const resultados = await clientSQL.query(query, values);
+        if(resultados.rowCount === 1){
+              return res.status(200).json({ mensaje : 'Bienvenido, usted a iniciado sesion' });
+        }
+        else {
+            return res.status(401).json({mensaje : 'usuario o contraseña incorrecta'});
+        }
 
-    clientSQL.query(query, values)
-        .then(result => {
-            if (result.rows.length > 0) {
-                // Usuario encontrado (credenciales correctas)
-                res.status(200).json({
-                    success: true,
-                    message: '¡Inicio de sesión exitoso!',
-                    user: result.rows[0] // Opcional: envías datos del usuario
-                });
-            } else {
-                // No se encontró el usuario (credenciales incorrectas)
-                res.status(401).json({ // 401 Unauthorized
-                    success: false,
-                    message: 'Usuario o contraseña incorrectos.'
-                });
-            }
-        })
-        .catch(err => {
-            console.error('Error al intentar iniciar sesión:', err);
-            res.status(500).json({
-                success: false,
-                message: 'Error interno del servidor al procesar la solicitud.'
-            });
-        });
+
+    } catch(err) {
+        console.error(err);
+        res.status(500).send('usuario o contraseña incorrecta');
+    }
+    
 });
 
-*/
 
 
 
